@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3C0C84F8-0BF3-42E3-811E-FA0B0B62D394}|TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale.csproj|c:\\mason unity\\textbasedrpg_playable_masonseale\\textbasedrpg_playable_masonseale\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C0C84F8-0BF3-42E3-811E-FA0B0B62D394}|TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale.csproj|solutionrelative:textbasedrpg_playable_masonseale\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C0C84F8-0BF3-42E3-811E-FA0B0B62D394}|TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale.csproj|c:\\mason unity\\textbasedrpg_playable_masonseale\\textbasedrpg_playable_masonseale\\map.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3C0C84F8-0BF3-42E3-811E-FA0B0B62D394}|TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale.csproj|solutionrelative:textbasedrpg_playable_masonseale\\map.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "map.txt",
+              "DocumentMoniker": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale\\map.txt",
+              "RelativeDocumentMoniker": "TextBasedRPG_Playable_MasonSeale\\map.txt",
+              "ToolTip": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale\\map.txt",
+              "RelativeToolTip": "TextBasedRPG_Playable_MasonSeale\\map.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-17T13:42:07.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale\\Program.cs",
+              "RelativeDocumentMoniker": "TextBasedRPG_Playable_MasonSeale\\Program.cs",
+              "ToolTip": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale\\Program.cs",
+              "RelativeToolTip": "TextBasedRPG_Playable_MasonSeale\\Program.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T11:55:32.825Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
