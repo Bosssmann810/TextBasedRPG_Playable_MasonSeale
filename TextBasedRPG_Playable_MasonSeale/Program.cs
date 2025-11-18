@@ -70,36 +70,36 @@ namespace TextBasedRPG_MasonSeale
                 {
                     Console.WriteLine();
                     Console.Write("│");
-                    foreach(char j in map[i])
+                    for(int j = 0; j < map[i].Length; j++)
                     {
-                        if(j == '+')
+                        if(map[i][j] == '+')
                         {
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                         }
-                        if(j == '~')
+                        if(map[i][j] == '~')
                         {
-                            
+                            spots.Add((i,j));
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
                             Console.ForegroundColor = ConsoleColor.Blue;
                         }
-                        if(j == '*')
+                        if(map[i][j] == '*')
                         {
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.Yellow;
                         }
-                        if(j == '^')
+                        if(map[i][j] == '^')
                         {
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.DarkGray;
                         }
-                        if(j == '`')
+                        if(map[i][j] == '`')
                         {
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                         }
                         verticlebounds += 1;
-                        Console.Write(j);
+                        Console.Write(map[i][j]);
                     }
 
                     Console.ForegroundColor = ConsoleColor.White;
@@ -333,7 +333,7 @@ namespace TextBasedRPG_MasonSeale
             {
                 playerpos.Item1 = Ppreviouspos.Item1;
             }
-            if (playerpos.Item2 == verticlebounds)
+            if (playerpos.Item2 == verticlebounds / horziontalbound + 4)
             {
                 playerpos.Item2 = Ppreviouspos.Item2;
             }
