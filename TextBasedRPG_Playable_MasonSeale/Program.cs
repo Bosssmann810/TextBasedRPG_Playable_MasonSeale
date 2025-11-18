@@ -55,16 +55,20 @@ namespace TextBasedRPG_MasonSeale
             if (x == 1)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("+");
-                string current = string.Concat(Enumerable.Repeat("-", map[0].Length));
+                Console.Write("┌");
+                string current = string.Concat(Enumerable.Repeat("─", map[0].Length));
                 Console.Write(current);
-                Console.Write("+");
+                Console.Write("┐");
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
                     Console.WriteLine();
-                    Console.Write("|");
+                    Console.Write("│");
                     foreach(char j in map[i])
                     {
+                        if(j == '+')
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        }
                         if(j == '~')
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
@@ -79,19 +83,19 @@ namespace TextBasedRPG_MasonSeale
                         }
                         if(j == '`')
                         {
-                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
                         }
                         Console.Write(j);
                     }
 
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("|");
+                    Console.Write("│");
 
                 }
                 Console.WriteLine();
-                Console.Write("+");
+                Console.Write("└");
                 Console.Write(current);
-                Console.Write("+");
+                Console.Write("┘");
             }
         }
 

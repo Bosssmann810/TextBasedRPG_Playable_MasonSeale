@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{3C0C84F8-0BF3-42E3-811E-FA0B0B62D394}|TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale.csproj|solutionrelative:textbasedrpg_playable_masonseale\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C0C84F8-0BF3-42E3-811E-FA0B0B62D394}|TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale.csproj|c:\\mason unity\\textbasedrpg_playable_masonseale\\textbasedrpg_playable_masonseale\\map.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{3C0C84F8-0BF3-42E3-811E-FA0B0B62D394}|TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale.csproj|C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\textbasedrpg_playable_masonseale\\map.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{3C0C84F8-0BF3-42E3-811E-FA0B0B62D394}|TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale.csproj|solutionrelative:textbasedrpg_playable_masonseale\\map.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "TextBasedRPG_Playable_MasonSeale\\map.txt",
               "ToolTip": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale\\map.txt",
               "RelativeToolTip": "TextBasedRPG_Playable_MasonSeale\\map.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-11-17T13:42:07.741Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "TextBasedRPG_Playable_MasonSeale\\Program.cs",
               "ToolTip": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale\\Program.cs",
               "RelativeToolTip": "TextBasedRPG_Playable_MasonSeale\\Program.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAgwCQAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAEUAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T11:55:32.825Z",
               "EditorCaption": ""
