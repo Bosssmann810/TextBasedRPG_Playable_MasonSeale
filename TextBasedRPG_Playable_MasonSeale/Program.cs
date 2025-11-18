@@ -9,13 +9,13 @@ namespace TextBasedRPG_MasonSeale
 {
     internal class Program
     {
-        static List<(int, int)> spots;
+        static List<(int, int)> spots = new List<(int, int)>();
         static bool enemystuck;
         static bool playerstuck = false;
         static bool going = true;
         static (int,int) playerpos = (10,5);
         static (int,int) Ppreviouspos = ( 2, 2 );
-        static int otherenmyhp = 20;
+        static int otherenmyhp = 30;
         static (int, int) otherenemypos = (20,10);
         static (int, int) Opreviouspos = (20, 10);
         static (int,int) enemypos = ( 12, 7 );
@@ -29,6 +29,7 @@ namespace TextBasedRPG_MasonSeale
 
         static void Main(string[] args)
         {
+            
 
             Console.CursorVisible = false;
             while (going == true)
@@ -37,9 +38,8 @@ namespace TextBasedRPG_MasonSeale
                 
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine();
-                hud();
                 DisplayMap();
-                  
+                hud();  
                 enemymovement();
                 otherenemymovement();
                 playermovment();  
@@ -79,7 +79,7 @@ namespace TextBasedRPG_MasonSeale
                         }
                         if(map[i][j] == '~')
                         {
-                            //spots.Add((i,j));
+                            spots.Add((j +1,i +2));
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
                             Console.ForegroundColor = ConsoleColor.Blue;
                         }
@@ -270,6 +270,7 @@ namespace TextBasedRPG_MasonSeale
         }
         static void hud()
         {
+            Console.SetCursorPosition(0, verticlebounds / horziontalbound + 3);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"Your HP: {playerhp} ");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -325,7 +326,7 @@ namespace TextBasedRPG_MasonSeale
                     playerpos.Item2 = Ppreviouspos.Item2;
                 }
             }
-            if (playerpos.Item2 == 3)
+            if (playerpos.Item2 == 1)
             {
                 playerpos.Item2 = Ppreviouspos.Item2;
             }
@@ -333,7 +334,7 @@ namespace TextBasedRPG_MasonSeale
             {
                 playerpos.Item1 = Ppreviouspos.Item1;
             }
-            if (playerpos.Item2 == verticlebounds / horziontalbound + 4)
+            if (playerpos.Item2 == verticlebounds / horziontalbound + 2)
             {
                 playerpos.Item2 = Ppreviouspos.Item2;
             }
@@ -341,10 +342,15 @@ namespace TextBasedRPG_MasonSeale
             {
                 playerpos.Item1 = Ppreviouspos.Item1;
             }
+
+            if (spots.Contains(playerpos))
+            {
+                playerpos = Ppreviouspos;
+            } 
         }
         static void endcheck()
         {
-
+            
             if(playerhp <= 0)
             {
                 going = false;
@@ -352,7 +358,7 @@ namespace TextBasedRPG_MasonSeale
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You died");
             }
-            if (enemyhp <= 0 && otherenmyhp <= 0)
+            if (enemyhp <= 0 && otherenmyhp <= 0 )
             {
                 going = false;
                 Console.Clear();
