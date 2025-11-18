@@ -79,7 +79,7 @@ namespace TextBasedRPG_MasonSeale
                         }
                         if(map[i][j] == '~')
                         {
-                            spots.Add((i,j));
+                            //spots.Add((i,j));
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
                             Console.ForegroundColor = ConsoleColor.Blue;
                         }
