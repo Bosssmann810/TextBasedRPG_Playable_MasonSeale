@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
+using static System.Net.WebRequestMethods;
 
 namespace TextBasedRPG_MasonSeale
 {
@@ -28,6 +29,9 @@ namespace TextBasedRPG_MasonSeale
         static bool tired = false;
         static int verticlebounds = 0;
         static int horziontalbound;
+        static int Sideoffset = 1;
+        static int downoffset = 2;
+        static int offscreen = 4;
 
         static void Main(string[] args)
         {
@@ -78,19 +82,20 @@ namespace TextBasedRPG_MasonSeale
                     {
                         if(map[i][j] == '+')
                         {
-                            lava.Add((j + 1, i + 2));
+                           
+                            lava.Add((j + Sideoffset, i + downoffset));
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                         }
                         if(map[i][j] == '~')
                         {
-                            spots.Add((j +1,i +2));
+                            spots.Add((j +Sideoffset,i +downoffset));
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
                             Console.ForegroundColor = ConsoleColor.Blue;
                         }
                         if(map[i][j] == '*')
                         {
-                            goldspots.Add((j + 1, i + 2));
+                            goldspots.Add((j + Sideoffset, i + downoffset));
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.Yellow;
                         }
@@ -104,6 +109,7 @@ namespace TextBasedRPG_MasonSeale
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                         }
+                        //increase verticlebouds value every time for later use 
                         verticlebounds += 1;
                         Console.Write(map[i][j]);
                     }
@@ -152,7 +158,7 @@ namespace TextBasedRPG_MasonSeale
             if (enemyhp <= 0)
             {
                 enemypos.Item1 = 0;
-                enemypos.Item2 = verticlebounds / horziontalbound + 4;
+                enemypos.Item2 = verticlebounds / horziontalbound + offscreen;
                 return;
             }
 
@@ -160,7 +166,7 @@ namespace TextBasedRPG_MasonSeale
             Epreviouspos.Item1 = enemypos.Item1;
             Epreviouspos.Item2 = enemypos.Item2;
             int horv = enemyrng.Next(0, 2);
-            //ranomly moves the enemy either horazontally or vertically (h or v == horv)
+            //ranomly moves the enemy either horazontally or vertically (h or v == horv) always moves towards the player
             if (horv == 0)
             {
                 if (playerpos.Item1 > enemypos.Item1)
@@ -222,7 +228,7 @@ namespace TextBasedRPG_MasonSeale
             if(otherenmyhp <= 0)
             {
                 otherenemypos.Item1 = 0;
-                otherenemypos.Item2 = verticlebounds / horziontalbound + 4;
+                otherenemypos.Item2 = verticlebounds / horziontalbound + offscreen;
                 return;
             }
             if(tired == true)
@@ -329,7 +335,7 @@ namespace TextBasedRPG_MasonSeale
             {
                 playerpos.Item1 += 1;
             }
-            
+            //if it tries to go on the same tile as the enemy attack and reset to previous tile.
             if (playerpos.Item1 == enemypos.Item1)
             {
                 if(playerpos.Item2 == enemypos.Item2)
@@ -340,6 +346,7 @@ namespace TextBasedRPG_MasonSeale
                 }
 
             }
+            //same but other enemy
             if(playerpos.Item1 == otherenemypos.Item1)
             {
                 if(playerpos.Item2 == otherenemypos.Item2)
@@ -349,6 +356,7 @@ namespace TextBasedRPG_MasonSeale
                     playerpos.Item2 = Ppreviouspos.Item2;
                 }
             }
+            //if it cant move to a tile, set it back to the previous tile.
             if (playerpos.Item2 == 1)
             {
                 playerpos.Item2 = Ppreviouspos.Item2;
@@ -358,11 +366,11 @@ namespace TextBasedRPG_MasonSeale
                 playerpos.Item1 = Ppreviouspos.Item1;
             }
             
-            if (playerpos.Item2 == verticlebounds / horziontalbound + 2)
+            if (playerpos.Item2 == verticlebounds / horziontalbound + downoffset)
             {
                 playerpos.Item2 = Ppreviouspos.Item2;
             }
-            if (playerpos.Item1 == horziontalbound + 1)
+            if (playerpos.Item1 == horziontalbound + Sideoffset)
             {
                 playerpos.Item1 = Ppreviouspos.Item1;
             }
@@ -371,16 +379,20 @@ namespace TextBasedRPG_MasonSeale
             {
                 playerpos = Ppreviouspos;
             }
+            //if it steps on lava do damage
             if (lava.Contains(playerpos))
             {
                 playerhp -= 1;
             }
+            //if it steps on a gold tile
             if (goldspots.Contains(playerpos))
             {
+                //if its already collected return
                 if (collected.Contains(playerpos))
                 {
                     return;
                 }
+                //otherwise add it to collected and increase gold
                 goldspots.Remove(playerpos);
                 collected.Add(playerpos);
                 gold += 1;

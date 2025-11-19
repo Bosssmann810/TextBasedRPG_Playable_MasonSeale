@@ -32,9 +32,10 @@
               "RelativeDocumentMoniker": "TextBasedRPG_Playable_MasonSeale\\map.txt",
               "ToolTip": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale\\map.txt",
               "RelativeToolTip": "TextBasedRPG_Playable_MasonSeale\\map.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-11-17T13:42:07.741Z"
+              "WhenOpened": "2025-11-17T13:42:07.741Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -44,7 +45,7 @@
               "RelativeDocumentMoniker": "TextBasedRPG_Playable_MasonSeale\\Program.cs",
               "ToolTip": "C:\\mason unity\\TextBasedRPG_Playable_MasonSeale\\TextBasedRPG_Playable_MasonSeale\\Program.cs",
               "RelativeToolTip": "TextBasedRPG_Playable_MasonSeale\\Program.cs",
-              "ViewState": "AgIAAPsAAAAAAAAAAAAQwGcBAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAJABAAAAAAAAAAAQwIoBAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T11:55:32.825Z",
               "EditorCaption": ""
