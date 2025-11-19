@@ -4,12 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.WebRequestMethods;
+
 
 namespace TextBasedRPG_MasonSeale
 {
     internal class Program
     {
+        
         static List<(int, int)> collected = new List<(int, int)>();
         static int gold = 0;
         static List<(int, int)> spots = new List<(int, int)>();
@@ -62,7 +63,7 @@ namespace TextBasedRPG_MasonSeale
             
 
             string path = "map.txt";
-            string[] map = File.ReadAllLines(path);
+            string[]map = File.ReadAllLines(path);
             //these two will hep with the boarders later on
             horziontalbound = map[0].Length;
             verticlebounds = 0;
