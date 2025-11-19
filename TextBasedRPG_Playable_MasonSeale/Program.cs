@@ -9,10 +9,11 @@ namespace TextBasedRPG_MasonSeale
 {
     internal class Program
     {
+        static List<(int, int)> collected = new List<(int, int)>();
+        static int gold = 0;
         static List<(int, int)> spots = new List<(int, int)>();
         static List<(int, int)> lava = new List<(int, int)>();
-        static bool enemystuck;
-        static bool playerstuck = false;
+        static List<(int, int)> goldspots = new List<(int, int)>();
         static bool going = true;
         static (int,int) playerpos = (10,5);
         static (int,int) Ppreviouspos = ( 2, 2 );
@@ -38,14 +39,15 @@ namespace TextBasedRPG_MasonSeale
                
                 
                 Console.SetCursorPosition(0, 0);
+                hud();
                 Console.WriteLine();
-                DisplayMap();
-                hud();  
+                DisplayMap();  
                 enemymovement();
                 otherenemymovement();
                 playermovment();  
                 endcheck();
             }
+            Console.ReadKey(true);
 
 
         }
@@ -87,6 +89,7 @@ namespace TextBasedRPG_MasonSeale
                         }
                         if(map[i][j] == '*')
                         {
+                            goldspots.Add((j + 1, i + 2));
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.Yellow;
                         }
@@ -103,6 +106,7 @@ namespace TextBasedRPG_MasonSeale
                         verticlebounds += 1;
                         Console.Write(map[i][j]);
                     }
+                    
 
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("│");
@@ -111,7 +115,13 @@ namespace TextBasedRPG_MasonSeale
                 Console.WriteLine();
                 Console.Write("└");
                 Console.Write(current);
-                Console.Write("┘");
+                Console.Write("┘");         
+                foreach ((int, int) coin in collected)
+                {
+                    Console.SetCursorPosition(coin.Item1, coin.Item2);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("*");
+                }
 
                 Console.SetCursorPosition(enemypos.Item1, enemypos.Item2);
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -132,6 +142,7 @@ namespace TextBasedRPG_MasonSeale
                     Console.SetCursorPosition(otherenemypos.Item1, otherenemypos.Item2);
                     Console.Write(" ");
                 }
+
             }
         }
         static void enemymovement()
@@ -139,7 +150,7 @@ namespace TextBasedRPG_MasonSeale
             if (enemyhp <= 0)
             {
                 enemypos.Item1 = 0;
-                enemypos.Item2 = 0;
+                enemypos.Item2 = verticlebounds / horziontalbound + 4;
                 return;
             }
 
@@ -189,14 +200,6 @@ namespace TextBasedRPG_MasonSeale
                     enemypos.Item2 = Epreviouspos.Item2;
                 }
             }
-            if (enemystuck == true)
-            {
-
-                enemypos.Item1  = Epreviouspos.Item1;
-                enemypos.Item2 = Epreviouspos.Item2;
-                enemystuck = false;
-                return;
-            }
             if (spots.Contains(enemypos))
             {
                 enemypos = Epreviouspos;
@@ -215,7 +218,7 @@ namespace TextBasedRPG_MasonSeale
             if(otherenmyhp <= 0)
             {
                 otherenemypos.Item1 = 0;
-                otherenemypos.Item2 = 0;
+                otherenemypos.Item2 = verticlebounds / horziontalbound + 4;
                 return;
             }
             if(tired == true)
@@ -288,11 +291,16 @@ namespace TextBasedRPG_MasonSeale
         }
         static void hud()
         {
-            Console.SetCursorPosition(0, verticlebounds / horziontalbound + 3);
+            Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"Your HP: {playerhp} ");
+            Console.Write($"Your HP: {playerhp} ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"Gold {gold} ");
+            
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Enemy HP: {enemyhp} Other Enemy HP: {otherenmyhp} ");
+            Console.Write($"Enemy HP: {enemyhp} ");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write($"Other Enemy HP: {otherenmyhp} ");
         }
         static void playermovment()
         {
@@ -315,14 +323,6 @@ namespace TextBasedRPG_MasonSeale
             if (key.Key == ConsoleKey.D)
             {
                 playerpos.Item1 += 1;
-            }
-            if (playerstuck == true)
-            {
-
-                playerstuck = false;
-                playerpos.Item1 = Ppreviouspos.Item1;
-                playerpos.Item2 = Ppreviouspos.Item2;
-                return;
             }
             
             if (playerpos.Item1 == enemypos.Item1)
@@ -369,6 +369,16 @@ namespace TextBasedRPG_MasonSeale
             {
                 playerhp -= 1;
             }
+            if (goldspots.Contains(playerpos))
+            {
+                if (collected.Contains(playerpos))
+                {
+                    return;
+                }
+                goldspots.Remove(playerpos);
+                collected.Add(playerpos);
+                gold += 1;
+            }
         }
         static void endcheck()
         {
@@ -384,6 +394,7 @@ namespace TextBasedRPG_MasonSeale
             {
                 going = false;
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("You win");
             }
 
