@@ -10,6 +10,7 @@ namespace TextBasedRPG_MasonSeale
     internal class Program
     {
         static List<(int, int)> spots = new List<(int, int)>();
+        static List<(int, int)> lava = new List<(int, int)>();
         static bool enemystuck;
         static bool playerstuck = false;
         static bool going = true;
@@ -74,6 +75,7 @@ namespace TextBasedRPG_MasonSeale
                     {
                         if(map[i][j] == '+')
                         {
+                            lava.Add((j + 1, i + 2));
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                         }
@@ -195,7 +197,15 @@ namespace TextBasedRPG_MasonSeale
                 enemystuck = false;
                 return;
             }
-            if(enemyhp <= 0)
+            if (spots.Contains(enemypos))
+            {
+                enemypos = Epreviouspos;
+            }
+            if (lava.Contains(enemypos))
+            {
+                enemyhp -= 1;
+            }
+            if (enemyhp <= 0)
             {
                 return;
             }
@@ -261,6 +271,14 @@ namespace TextBasedRPG_MasonSeale
                     otherenemypos.Item1 = Opreviouspos.Item1;
                     otherenemypos.Item2 = Opreviouspos.Item2;
                 }
+            }
+            if (spots.Contains(otherenemypos))
+            {
+                otherenemypos = Opreviouspos;
+            }
+            if (lava.Contains(otherenemypos))
+            {
+                otherenmyhp -= 1;
             }
             if (enemyhp <= 0)
             {
@@ -346,7 +364,11 @@ namespace TextBasedRPG_MasonSeale
             if (spots.Contains(playerpos))
             {
                 playerpos = Ppreviouspos;
-            } 
+            }
+            if (lava.Contains(playerpos))
+            {
+                playerhp -= 1;
+            }
         }
         static void endcheck()
         {
