@@ -52,13 +52,14 @@ namespace TextBasedRPG_MasonSeale
 
         }
 
-
+        //Displays the map, as well as everything on the map, including players enemies and diffrent tiles
         static void DisplayMap(int x = 1)
         {
             
 
             string path = "map.txt";
             string[] map = File.ReadAllLines(path);
+            //these two will hep with the boarders later on
             horziontalbound = map[0].Length;
             verticlebounds = 0;
 
@@ -145,6 +146,7 @@ namespace TextBasedRPG_MasonSeale
 
             }
         }
+        //controls how the first enemy moves
         static void enemymovement()
         {
             if (enemyhp <= 0)
@@ -158,6 +160,7 @@ namespace TextBasedRPG_MasonSeale
             Epreviouspos.Item1 = enemypos.Item1;
             Epreviouspos.Item2 = enemypos.Item2;
             int horv = enemyrng.Next(0, 2);
+            //ranomly moves the enemy either horazontally or vertically (h or v == horv)
             if (horv == 0)
             {
                 if (playerpos.Item1 > enemypos.Item1)
@@ -213,6 +216,7 @@ namespace TextBasedRPG_MasonSeale
                 return;
             }
         }
+        //controls how the other enemy moves (its basically the same as the first enemy but with diffret variables 
         static void otherenemymovement()
         {
             if(otherenmyhp <= 0)
@@ -302,6 +306,7 @@ namespace TextBasedRPG_MasonSeale
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write($"Other Enemy HP: {otherenmyhp} ");
         }
+        //controls player movment, as well handles checks related to where they are trying to go (damage or boundries)
         static void playermovment()
         {
 
@@ -352,6 +357,7 @@ namespace TextBasedRPG_MasonSeale
             {
                 playerpos.Item1 = Ppreviouspos.Item1;
             }
+            
             if (playerpos.Item2 == verticlebounds / horziontalbound + 2)
             {
                 playerpos.Item2 = Ppreviouspos.Item2;
@@ -380,11 +386,13 @@ namespace TextBasedRPG_MasonSeale
                 gold += 1;
             }
         }
+        //Endcheck keeps track of if either the player or both enemies are dead and ends the game
         static void endcheck()
         {
-            
+            //if player is dead
             if(playerhp <= 0)
             {
+                //stop the game
                 going = false;
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
